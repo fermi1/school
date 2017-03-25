@@ -1,0 +1,10 @@
+relative_assets = true
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "img"
+javascripts_dir = "lib/materialize-src/js"
+fonts_dir = "lib/materialize-src/fonts"
+output_style = :expanded
+#output_style = :compressed
+environment = :development
+line_comments = false

@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title data-t="KlassenWeb.de">KlassenWeb.de</title>
+     
+    <link rel="manifest" href="manifest.json">
+    
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+	  
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="css/fullcalendar.min.css">
+    <link rel="stylesheet" href="css/squares.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/jquery.ui.timepicker.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="cordova.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/jquery.ui.touch.js"></script>
+	<script src="js/fullcalendar.min.js"></script>
+    <script src="js/de.js"></script>
+
+  </head>
+  <body>
+  
+  <div data-role="page" id="page_splash" class="main">
+      <div data-role="content"><img src="img/splash.png" style="width:258px; height:110px;"></div>
+    </div><!-- /page -->
+  
+   <div data-role="page" id="page_afront">
+      
+    <div data-role="header" class="header">
+
+      <div class="logo">
+      <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      </div>
+      <div class="header-right">    
+           <a href="#aadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div> 
+      
+    </div><!-- /header -->
+
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="aadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+		    		<div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+		    		<div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+		    		<div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+		    		<div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+		  		</div>
+        </div>
+        <div class="filters col-sm-12 col-md-5">
+    			<form style="float:left" data-role="none">
+      			<div style="float: left; ">Filters:</div>
+      			<div class="checkboxes" style="float: left;">
+        			<div class="checkbox fnews">
+        				<label >
+        				  <input value="1" checked="" type="checkbox"  data-role="none"><span data-t="news">News</span>
+        				</label>
+        			</div>
+        			<div class="checkbox fevents">
+        				<label >
+        					<input value="2" checked="" type="checkbox" data-role="none"><span data-t="event">Events</span>
+        				</label>
+        			</div>
+        			<div class="clearfix"></div>
+      			</div>
+      			<div class="radios" style="float: left;">
+        			<div class="radio fdesc">
+        				<label >
+        					<input name="sfirst" value="DESC" checked="" type="radio" data-role="none"><span data-t="latestfirst">Latest first</span>
+        				</label>
+        			</div>
+        			<div class="radio fasc">
+        				<label >
+        					<input name="sfirst" value="ASC" type="radio" data-role="none"><span data-t="oldestfirst">Oldest first</span>
+        				</label>
+        			</div>
+        			<div class="clearfix"></div>
+      			</div>
+      		</form>
+      		<div class="clearfix"></div>
+    		</div>
+        <div class="node_wrapper"></div>
+        
+        <div data-role="popup" id="delete-coment-popup" class="ui-content popup comment-popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+          		<p class="parDialog" data-t="deleteDialog">Are you sure you want to delete the comment?</p>
+              <a href="#" class="ui-btn popup-item popup-delete" data-t="delete">Delete</a>
+              <a href="#" class="ui-btn popup-item popup-cancel" data-rel="back" data-t="cancel">Cancel</a>
+		  		</div>
+        </div>
+  
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options-active"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+        
+    
+    <div data-role="page" id="page_front" class="page-front">
+    <!--<div data-role="header">
+       <h1 data-t="title">KlassenWeb.de</h1>
+     </div>--><!-- /header -->
+     <div data-role="content">
+      <div class="splash">
+       <img src="img/splash.png" style="width:258px; height:110px;">
+      </div>
+       <p><a href="#page_login" data-role="button" id="button_login" class="index-login" data-t="login">Login</a></p>
+       <p><a href="#page_signup_p" data-role="button" id="button_signup" class="index-signup" data-t="signup">Signup</a></p>
+       <!-- <p><a href="#page_google" data-role="button" id="button_google" class="index-google" data-t="google">Use Google</a></p> // -->
+     </div><!-- /content -->
+    </div><!-- /page -->
+	
+	
+	<div data-role="page" id="page_login">
+	  <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+	  </div><!-- /header -->
+	 
+	  <div class="page-content" data-role="content">
+	  
+    
+	    <div data-role="popup" class="login-register-dialog" id="loginAfterRegisterDialog" data-history="false">
+	      <div data-role="main" class="dialog-content ui-content">
+	        <h3 data-t="welcome">Welcome to KlassenWeb.de!</h3>
+	        <p data-t="activatemsg">Please check out your inbox to activate the account.</p>
+	        <a href="#" data-t="ok" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-check ui-btn-icon-left" data-rel="back">OK</a>
+	      </div>
+	    </div>  
+    
+	    <form action="index.html" method="post" id="loginForm">
+
+
+	    <div class="input">
+	      <label for="page_login_email" data-t="email">Email</label>
+	      <input type="text" id="page_login_email" name="page_login_email" data-clear-btn="true" />
+	    </div>
+	    <div class="input">
+	      <label for="page_login_pass" data-t="password">Password</label>
+	      <input type="password" id="page_login_pass" name="page_login_pass" data-clear-btn="true" required />
+	    </div>
+	    <fieldset>
+	      <div class="button-form"><button type="button" data-theme="b" id="page_login_submit" class="classic-button login"><i class="material-icons">power_settings_new</i> <span data-t="login">Login</span></button></div>
+	    </fieldset>
+	    <div class="center">
+	       <!-- <a href="#page_reset_password" data-transition="slide" id="button_reset_password" class="label-reset-password" data-t="forgot">I forgot my password</a>// -->
+	    </div>
+        <fieldset>
+          <div class="button-form"><button type="button" data-theme="a" id="page_login_cancel" class="cancel-button"><i class="material-icons">clear</i><span data-t="cancel">Cancel</span></button></div>
+        </fieldset>
+        </form>
+	  </div><!-- /content -->
+	</div><!-- /page -->
+	
+	
+    <div data-role="page" id="page_signup">
+    <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+    </div><!-- /header -->
+    
+      <div class="page-content" data-role="content">
+        <fieldset>
+          <div class="button-form"><button type="button" data-theme="a" id="button_signup_p" data-t="parent">For parents</button></div>
+        </fieldset>
+        <fieldset>
+          <div class="button-form"><button type="button" data-theme="a" id="button_signup_s" data-t="school">For schools</button></div>
+        </fieldset>
+      </div><!-- /content -->
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_signup_p">
+      <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+    </div><!-- /header -->
+    
+    
+      <div class="page-content" data-role="content">
+        <form action="index.html" method="post" id="signupFormP">
+		  <div class="input">
+		    <label for="page_signup_fname" data-t="fname">First name</label>
+		    <input type="text" id="page_signup_fname" name="page_signup_fname" data-clear-btn="true" required />
+		  </div>
+		  <div class="input">
+		    <label for="page_signup_lname" data-t="lname">Last name</label>
+		    <input type="text" id="page_signup_lname" name="page_signup_lname" data-clear-btn="true" required />
+		  </div>
+		  <div class="input">
+		    <label for="page_signup_email" data-t="email">Email</label>
+		    <input type="email" id="page_signup_email" name="page_signup_email" data-clear-btn="true" />
+		  </div>
+		  <div class="input">
+		    <label for="page_signup_pass" data-t="password">Password</label>
+		    <input type="password" id="page_signup_pass" name="page_signup_pass" data-clear-btn="true" required />
+		  </div>
+		  <fieldset>
+		    <div class="button-form" ><button type="button" data-theme="b" id="page_signup_submit" class="classic-button signup"><i class="material-icons">person_add</i> <span data-t="signup">Signup</span></button></div>
+		  </fieldset>
+		  <div data-t="terms" class="center label-reset-password">By signing up you agree to our<br /><a href="">terms and conditions</a></div>
+		  <fieldset>
+		    <div class="button-form"><button type="button" data-theme="a" class="cancel-button"><i class="material-icons">clear</i> <span data-t="cancel">Cancel</span></button></div>
+		  </fieldset>
+		</form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_signup_s">
+     <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+    </div><!-- /header -->
+    
+      <div class="page-content" data-role="content">
+        <form action="index.html" method="post" id="signupFormS">
+          <div class="input">
+            <label for="page_signup_s_fname" data-t="fname">First name</label>
+            <input type="text" id="page_signup_s_fname" name="page_signup_s_fname" data-clear-btn="true" required />
+          </div>
+          <div class="input">
+            <label for="page_signup_s_lname" data-t="lname">Last name</label>
+            <input type="text" id="page_signup_s_lname" name="page_signup_s_lname" data-clear-btn="true" required />
+          </div>
+		  <div class="input">
+		    <label for="page_signup_s_email" data-t="aemail">Admin Email</label>
+		    <input type="email" id="page_signup_s_email" name="page_signup_s_email" data-clear-btn="true" />
+		  </div>
+		  <div class="input">
+		    <label for="page_signup_s_pass" data-t="apassword">Admin Password</label>
+		    <input type="password" id="page_signup_s_pass" name="page_signup_s_pass" data-clear-btn="true" required />
+		  </div>
+          <div class="input-radio">
+			<fieldset data-role="controlgroup">
+		      <input type="radio" name="radio-gender" id="radio-male" value="male" checked="checked" />
+		      <label class="plchldr-processed label-radio" for="radio-male" data-t="male">Male</label>
+		      <input type="radio" name="radio-gender" id="radio-female" value="female" />
+		      <label class="plchldr-processed label-radio" for="radio-female" data-t="female">Female</label>
+			</fieldset>			          	
+          </div>
+		  <fieldset>
+		    <div class="button-form"><button type="button" data-theme="b" id="page_signup_s_submit" class="classic-button signup"><i class="material-icons">person_add</i> <span data-t="signup">Signup</span></button></div>
+		  </fieldset>
+		  <div data-t="terms" class="center label-reset-password">By signing up you agree to our<br /><a href="">terms and conditions</a></div>
+          <fieldset>
+            <div class="button-form"><button type="button" data-theme="a" id="page_signup_cancel" class="cancel-button"><i class="material-icons">clear</i> <span data-t="cancel">Cancel</span></button></div>
+          </fieldset>
+        </form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+       
+       
+    <div data-role="page" id="page_logout">
+       <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+    </div><!-- /header -->
+    
+      <div class="page-content" data-role="content">
+        <fieldset>
+          <div class="button-form"><button type="button" data-theme="b" id="page_logout_submit" class="classic-button"><i class="material-icons">power_settings_new</i><span data-t="logout">Logout</span></button></div>
+        </fieldset>
+        <fieldset>
+          <div class="button-form"><button type="button" data-theme="a" id="page_logout_cancel" class="cancel-button"><i class="material-icons">clear</i><span data-t="cancel">Cancel</span></button></div>
+        </fieldset>
+      </div><!-- /content -->
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_reset_password">
+      <div data-role="header" class="logo-header">
+        <a class="logo-link" href="index.html"><img src="img/logo.png"></a>
+    </div><!-- /header -->
+    
+      <div class="page-content" data-role="content">
+        <fieldset>
+          <div class="button-form" ><button type="button" data-theme="b" id="page_reset_submit" class="reset-button" data-t="reset">Reset password</button></div>
+        </fieldset>
+        <fieldset>
+          <div class="button-form" ><button type="button" data-theme="a" id="page_reset_cancel" class="cancel-reset-button"><i class="material-icons">clear</i><span data-t="cancel">Cancel</span></button></div>
+        </fieldset>
+      </div><!-- /content -->
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_add_news">
+    	<div data-role="header" class="header">
+      	<div class="logo">
+      		<a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      	</div>
+      	<div class="header-right">    
+        	<a href="#anaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      	</div>      
+    	</div><!-- /header -->
+    
+      <div data-role="content" class="main-content">
+        <div data-role="popup" id="anaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+            <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+            <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+            <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+          </div>
+        </div>
+      <form accept-charset="UTF-8" id="news-node-form" method="post" action="/" enctype="multipart/form-data" class="node-form node-news-form">
+        <div>
+          <div class="form-item form-item-title form-type-textfield form-group">
+            <label for="edit-title" class="control-label" data-t="strtitle">Title *</label>
+            <input type="text" maxlength="255" size="60" value="" name="edit-title" class="edit-title form-control form-text required" data-clear-btn="true" required>
+          </div>
+          <input type="hidden" value="" name="data">
+          <input type="hidden" value="create" name="action">
+          <div class="recipients">
+            <select name="recipients" id="recipients" data-native-menu="false" multiple required>
+              <option data-t="recipients">Select recipients</option>
+            </select>
+          </div>
+          <div class="edit-body">
+            <textarea rowspan="5" name="body" class="body" data-t="type" placeholder="Type something..." required></textarea>
+          </div>
+          <div class="image"></div>
+          <div class="edit-actions" class="form-actions form-wrapper form-group">
+            <button class="btn btn-add btn-success form-submit ajax-processed" value="Save" name="op" id="edit-submit-news" type="submit" data-theme="b">
+             <i class="material-icons">done</i><span data-t="save">Save</span>
+            </button>
+            <fieldset><button type="button" data-theme="a" id="page_an_reset_cancel" class="cancel-button page_an_reset_cancel"><i class="material-icons">clear</i><span data-t="cancel">Cancel</span></button>
+        	</fieldset>
+          </div>
+        </div>
+      </form>
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item-active footer-home-active"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_add_event">
+			<script src="js/jquery-ui.min.js"></script>
+			<script src="js/jquery.ui.timepicker.js"></script>
+    	<div data-role="header" class="header">
+      	<div class="logo">
+      		<a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      	</div>
+      	<div class="header-right">    
+        	<a href="#aeaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      	</div>      
+    	</div><!-- /header -->
+    
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="aeaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+            <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+            <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+            <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+          </div>
+        </div>
+      <form accept-charset="UTF-8" id="event-node-form" class="event-node-form" method="post" action="/" enctype="multipart/form-data" class="node-form node-event-form">
+        <div>
+          <div class="form-item form-item-title form-type-textfield form-group">
+            <label for="edit-title" class="control-label" data-t="strtitle">Title *</label>
+            <input type="text" maxlength="255" size="60" value="" name="edit-title" class="edit-title form-control form-text required" data-clear-btn="true" required>
+          </div>
+          <div class="recipients">
+            <select name="recipients" id="recipients" data-native-menu="false" multiple required>
+              <option data-t="recipients">Select recipients</option>
+            </select>
+          </div>
+         <div class="input-radio">
+            <fieldset data-role="controlgroup">
+              <span class="panel-title fieldset-legend" data-t="createEvent">Create event</span>:
+              <input type="radio" name="type-event" id="radio-setDate" value="fixed" checked="checked" />
+              <label class="plchldr-processed label-radio" for="radio-setDate" data-t="setDate">Set date</label>
+              <input type="radio" name="type-event" id="radio-voteDate" value="optional" />
+              <label class="plchldr-processed label-radio" for="radio-voteDate" data-t="voteDate">Vote on a date</label>
+            </fieldset>
+          </div>
+          <fieldset class="date-combo panel panel-default form-wrapper">
+          	<legend class="panel-heading">
+      				<span class="panel-title fieldset-legend" data-t="eventDate">Event date</span>
+    				</legend>
+          	<div class="panel-body">  
+    				 	<div class="one-date container-inline-date">
+ 				 				<div class="form-item start-item-date form-type-textfield form-group">
+								<input class="date-clear form-control form-text field-event-date-datepicker" readonly="true" title="" name="field_event_date[und][][value][date]" size="20" maxlength="30" data-original-title=" E.g., 05.03.2017" type="text">
+								</div>
+								<div class="form-item start-item-time form-type-textfield form-group"> 
+									<input class="date-clear form-control form-text field-event-date-timepicker" readonly="true" title="" name="field_event_date[und][][value][time]" size="15" maxlength="10" data-original-title="E.g., 12:10" type="text">
+								</div>
+								<div class="form-item end-item-date form-type-textfield form-group"> 
+									<input class="date-clear form-control form-text field-event-date-datepicker" readonly="true" title="" name="field_event_date[und][][value2][date]" size="20" maxlength="30" data-original-title=" E.g., 05.03.2017" type="text">
+								</div>
+								<div class="form-item end-item-time form-type-textfield form-group"> 
+									<input class="date-clear form-control form-text field-event-date-timepicker" readonly="true" title="" name="field_event_date[und][][value2][time]" size="15" maxlength="10" data-original-title="E.g., 12:10" type="text">
+								</div>
+							</div> 
+						</div>
+  				</fieldset>
+  				<div class="clearfix">
+  					<button class="field-add-more-submit btn btn-info" id="edit-field-event-date-und-add-more" name="field_event_date_add_more" value="Add another item" style="display: inline-block;" data-t="anotherItem">Add another item</button>
+					</div>
+  				<fieldset class="end-voting-date-combo panel panel-default form-wrapper">
+          	<legend class="panel-heading">
+      				<span class="panel-title fieldset-legend" data-t="endVoting">End voting</span>
+    				</legend>
+          	<div class="panel-body">
+        			<div class="date-no-float container-inline-date">
+        				<div class="date-no-float form-item form-item-field-end-voting-und-0-value form-type-date-popup form-group">
+        					<div id="edit-field-end-voting-und-0-value" class="date-padding clearfix">
+        						<div class="form-item form-item-field-end-voting-und-0-value-date form-type-textfield form-group"> 
+        							<label class="control-label" for="edit-field-end-voting-und-0-value-datepicker-popup-0" data-t="date">Date</label>
+											<input class="date-clear form-control form-text" title="" readonly="true" data-toggle="tooltip" id="edit-field-end-voting-und-0-value-datepicker-popup-0" name="field_end_voting[und][0][value][date]" value="03.03.2017" size="20" maxlength="30" data-original-title=" E.g., 05.03.2017" type="text">
+										</div>
+										<div class="form-item form-item-field-end-voting-und-0-value-time form-type-textfield form-group"> 
+											<label class="control-label" for="edit-field-end-voting-und-0-value-timeEntry-popup-1" data-t="time">Time</label>
+											<input class="date-clear form-control form-text" title="" readonly="true" data-toggle="tooltip" id="edit-field-end-voting-und-0-value-timeEntry-popup-1" name="field_end_voting[und][0][value][time]" value="12:10" size="15" maxlength="10" data-original-title="E.g., 12:10" type="text">
+										</div>
+									</div>
+								</div>
+							</div>  
+						</div>
+  				</fieldset> 				
+          <div class="edit-body">
+            <textarea rowspan="5" name="body" class="body" required data-t="type" placeholder="Type something..."></textarea>
+          </div>
+          <div class="image"></div>
+          <div class="edit-actions" class="form-actions form-wrapper form-group">
+            <button class="btn btn-success btn-add form-submit ajax-processed" name="op" id="edit-submit-news" type="submit" data-theme="b">
+             <i class="material-icons">done</i><span data-t="save">Save</span>
+            </button>
+            <fieldset><button type="button" data-theme="a" id="page_an_reset_cancel" class="cancel-button page_an_reset_cancel"><i class="material-icons">clear</i><span data-t="cancel">Cancel</span></button>
+        	</fieldset>
+          </div>
+        </div>
+      </form>
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item-active footer-home-active"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_cfront">
+      <div data-role="header" class="header">
+        <div class="logo">
+          <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+        </div>
+        <div class="header-right">    
+          <a href="#caadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+        </div>      
+      </div><!-- /header -->
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="caadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+            <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+            <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+            <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+          </div>
+        </div>
+        <div id="calendar" class="calendar"></div>
+      </div><!-- /content -->      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar-active"></a></li>
+            <li><a href="#page_slfront" class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_slfront">
+      <div data-role="header" class="header">
+        <div class="logo">
+          <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+        </div>
+        <div class="header-right">    
+          <a href="#slaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+        </div>      
+      </div><!-- /header -->
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="slaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+            <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+            <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+            <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+          </div>
+        </div>
+        <div id="student-list" style="margin-top: -25px;"></div>
+      </div><!-- /content -->      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront" class="footer-item footer-studentlist-active"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="editcomment">
+    	<div data-role="header" class="header">
+      	<div class="logo">
+      		<a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      	</div>
+      	<div class="header-right">    
+        	<a href="#ecaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      	</div>      
+    	</div><!-- /header -->
+    
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="ecaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+            <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+            <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+            <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+          </div>
+        </div>
+      	<div class="wrapper-comment-form">
+       	  <form id="comment-form" data-id="node.nid" >
+       	    <div class="comment-body-wrapper">
+       	      <textarea rowspan="5" name="comment-body" class="comment-body comment-body-node.nid ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow" required></textarea>
+       	      <input type="submit" value="reply" class="btn btn-success form-submit ajax-processed ui-btn ui-btn-b ui-shadow ui-corner-all" data-t="reply">
+       	    </div>
+       		</form>
+      	</div>    
+      </div><!-- /content -->
+      
+       <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront" class="footer-item footer-studentlist-active"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_confront2">
+       <div data-role="header" class="header">
+         <div class="last-sender-icon"> 
+           <a href="#page_confront1" data-transition="slide" data-direction="reverse"><i class="material-icons">arrow_back</i></a>
+         </div>
+      <div class="logo">
+      <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      </div>
+      <div class="header-right-conversation">    
+            <a href="#c2aadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div>      
+    </div><!-- /header -->
+      <div class="main-content" data-role="content">
+         <div data-role="popup" id="c2aadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+        <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+        <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+        <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+        <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+      </div>
+        </div>
+       
+       <a href="#page_confront1" data-transition="slide" data-direction="reverse">Back to messages</a>        
+       <div class="recipians-col">recipians-col</div>
+       
+  
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront" class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages-active"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_evfront">
+    	<div data-role="header" class="header">
+      	<div class="logo">
+      		<a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      	</div>
+      	<div class="header-right-conversation">    
+          <a href="#evaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      	</div>      
+    	</div><!-- /header -->
+      <div class="main-content" data-role="content">
+      	<div data-role="popup" id="evaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+        		<div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+        		<div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+        		<div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+        		<div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+      		</div>
+        </div>       
+  
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront"  class="footer-item footer-messages-active"></a></li>
+            <li><a href="#page_ofront"  class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+     <div data-role="page" id="page_newmessage">
+      <div data-role="header" class="header">
+	      <div class="logo">
+  		    <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      	</div>
+      <div class="header-right">    
+        <a href="#nmaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div> 
+    </div><!-- /header -->
+    
+    <div class="main-content" data-role="content">
+      <div data-role="popup" id="nmaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+        <div class="ui-grid-a ui-responsive">
+    	    <div class="ui-block-a add-news">
+            <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+          </div>
+      	  <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+          </div>
+        	<div class="ui-block-a">
+            <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+          </div>
+        	<div class="ui-block-b">
+            <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+          </div>
+      	</div>
+       </div>       
+        
+       <div class="newmessages-col"></div>
+       
+       <div class="ui-field-contain">
+         <form class="mobileform" method="get" action="#">
+           <label for="msgtextarea" data-t="message">Message</label>
+	  		   <textarea name="textarea" form="contact-form" data-t="type" placeholder="Type something..." class="new-message-body" id="msgtextarea"></textarea>
+	  		   <input type="button" class="submit-new-message" form="contact-form" data-t="submit" value="Submit">
+        </form>
+			</div> 
+    </div><!-- /content -->
+      
+    <div data-role="footer" class="footer">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+          <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+          <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+          <li><a href="#page_mfront" class="footer-item footer-messages-active"></a></li>
+          <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+        </ul>
+      </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_mfront">
+      <div data-role="header" class="header">
+
+      <div class="logo">
+      <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      </div>
+      <div class="header-right">    
+           <a href="#mfaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div> 
+      
+    </div><!-- /header -->
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="mfaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+        <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+        <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+        <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+        <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+      </div>
+        </div>
+               
+       <div class="all-messages"></div>
+      
+  
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages-active"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_confront1">
+      <div data-role="header" class="header">
+				<div class="avatar">
+      	</div>
+      	<div class="header-right-conversation">    
+      		<a href="#cfaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      		<!--<a href="#page_confront2" data-transition="slide"><i class="material-icons">arrow_forward</i></a> //-->
+      	</div>   
+    	</div><!-- /header -->
+
+    
+			<div class="main-content" data-role="content">
+	    	<div data-role="popup" id="cfaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+	        <div class="ui-grid-a ui-responsive">
+	        	<div class="ui-block-a add-news">
+	            <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+	          </div>
+	        	<div class="ui-block-b add-event">
+	            <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+	          </div>
+	        	<div class="ui-block-a">
+	            <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+	          </div>
+	        	<div class="ui-block-b">
+	            <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+	          </div>
+	      	</div>
+	       </div>
+	      
+	       <div class="messages-col"></div>
+	       
+	       <form method="post" action="#">
+		     	<div class="post-message ui-field-contain">
+	          <button class="post-message-btn" type="submit"><span data-t="submit">Submit</button>
+		  	   	<textarea name="textarea" id="textarea" data-t="type" placeholder="Type something"></textarea>
+			 		</div>
+		   	</form>
+	  
+			</div><!-- /content -->
+	      
+	    <div data-role="footer" class="footer">
+	      <div data-role="navbar">
+	        <ul>
+	          <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+	          <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+	          <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+	          <li><a href="#page_mfront"  class="footer-item footer-messages-active"></a></li>
+	          <li><a href="#page_ofront"  class="footer-item footer-options"></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div><!-- /page -->
+	  
+    
+    <div data-role="page" id="page_ofront">
+         <div data-role="header" class="header">
+
+      <div class="logo">
+      <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      </div>
+      <div class="header-right">    
+           <a href="#opaadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div> 
+      
+    </div><!-- /header -->
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="opaadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+        <div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+        <div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+        <div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+        <div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+      </div>
+        </div>
+        
+        <form action="#" method="post" id="optionsFormP">
+          <input type="hidden" id="page_options_uid" name="page_options_uid" value="" />
+          <div class="input">
+            <label for="page_options_fname" data-t="fname">First name</label>
+            <input type="text" id="page_options_fname" name="page_options_fname" data-clear-btn="true" required />
+          </div>
+          <div class="input">
+            <label for="page_options_lname" data-t="lname">Last name</label>
+            <input type="text" id="page_options_lname" name="page_options_lname" data-clear-btn="true" required />
+          </div>
+          <!-- <div class="input">
+            <label for="page_options_email" data-t="email">Email</label>
+            <input type="email" id="page_options_email" name="page_options_email" data-clear-btn="true" />
+          </div>
+          <div class="input">
+            <label for="page_options_pass" data-t="password">Password</label>
+            <input type="password" id="page_options_pass" name="page_options_pass" data-clear-btn="true" required />
+          </div>// -->
+          <div class="input-radio">
+            <fieldset data-role="controlgroup">
+              <input type="radio" name="radio-gender" id="radio-male" value="male" checked="checked" />
+              <label class="plchldr-processed label-radio" for="radio-male" data-t="male">Male</label>
+              <input type="radio" name="radio-gender" id="radio-female" value="female" />
+              <label class="plchldr-processed label-radio" for="radio-female" data-t="female">Female</label>
+            </fieldset>
+          </div>
+          <fieldset>
+            <label for="switch" class="plchldr-processed" data-t="receivem">Receive email</label>
+            <input type="checkbox" data-role="flipswitch" name="receive_email" id="receive_email">
+          </fieldset>
+          <fieldset>
+            <label for="switch" class="plchldr-processed" data-t="receivep">Receive push notifications</label>
+            <input type="checkbox" data-role="flipswitch" name="receive_push" id="receive_push">
+          </fieldset>
+          <fieldset>
+            <label for="switch" class="plchldr-processed" data-t="mydata">My e-mail and Telefone numbers can not be shown to other parents. I cannot contact other parents either</label>
+            <input type="checkbox" data-role="flipswitch" name="showdata" id="showdata">
+          </fieldset>
+          <fieldset>
+          <div class="button-form" >
+              <button type="button" data-theme="b" id="page_options_submit" class="classic-button"><i class="material-icons">done</i>  <span data-t="save">Save</span></button>
+              <button type="button" data-theme="a" id="logout" class="button-logout"><i class="material-icons">power_settings_new</i> <span data-t="logout">Logout</span></button>
+            </div>
+          </fieldset>
+        </form>
+  
+      </div><!-- /content -->
+      
+     <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options-active"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <div data-role="page" id="page_sevent">
+      
+    <div data-role="header" class="header">
+
+      <div class="logo">
+      <a class="logo-link" href="#page_afront"><img class="logo" src="img/logo.png" align="left"></a>
+      </div>
+      <div class="header-right">    
+           <a href="#staadd" data-rel="popup" data-transition="fade" data-position-to="window"><i class="material-icons">add</i></a>
+      </div> 
+      
+    </div><!-- /header -->
+
+      <div class="main-content" data-role="content">
+        <div data-role="popup" id="staadd" class="ui-content popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+		    		<div class="ui-block-a add-news">
+              <a href="#page_add_news" class="ui-btn popup-item popup-news" data-transition="fade" data-t="news">News</a>
+            </div>
+		    		<div class="ui-block-b add-event">
+              <a href="#page_add_event" class="ui-btn popup-item popup-event" data-transition="fade" data-t="event">Event</a>
+            </div>
+		    		<div class="ui-block-a">
+              <a href="#page_newmessage" class="ui-btn popup-item popup-message" data-transition="fade" data-t="message">Message</a>
+            </div>
+		    		<div class="ui-block-b">
+              <a href="#" class="ui-btn popup-item popup-back" data-rel="back" data-t="back">Go Back</a>
+            </div>
+		  		</div>
+        </div>
+        <div class="single_event"></div>
+        
+        <div data-role="popup" id="delete-coment-popup" class="ui-content popup comment-popup" data-history="false" data-overlay-theme="a">
+          <div class="ui-grid-a ui-responsive">
+          		<p class="parDialog" data-t="deleteDialog">Are you sure you want to delete the comment?</p>
+              <a href="#" class="ui-btn popup-item popup-delete" data-t="delete">Delete</a>
+              <a href="#" class="ui-btn popup-item popup-cancel" data-rel="back" data-t="cancel">Cancel</a>
+		  		</div>
+        </div>
+  
+      </div><!-- /content -->
+      
+      <div data-role="footer" class="footer">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#page_afront" class="footer-item footer-home"></a></li>
+            <li><a href="#page_cfront" class="footer-item footer-calendar"></a></li>
+            <li><a href="#page_slfront"  class="footer-item footer-studentlist"></a></li>
+            <li><a href="#page_mfront" class="footer-item footer-messages"></a></li>
+            <li><a href="#page_ofront" class="footer-item footer-options-active"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+    
+    
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/jquery.cookie.js"></script>
+    <script src="lib/materialize-src/js/bin/materialize.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/messages_de.js"></script>
+    <script src="js/localisation_de.js"></script>
+    <script src="js/date.format.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/signup.js"></script>
+  </body>
+</html>
